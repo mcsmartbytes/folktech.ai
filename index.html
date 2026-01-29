@@ -7,6 +7,7 @@
     <title>FolkTech.AI - Where Tradition Meets Innovation</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/hero-clean.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,17 +36,166 @@
     <main>
         <section class="hero">
             <div class="hero-bg"></div>
+            <!-- Particle background -->
+            <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
             <div class="hero-content container">
                 <div class="hero-text">
                     <h1 class="hero-title">Where Tradition Meets Innovation</h1>
                     <p class="hero-subtitle">Harnessing the power of artificial intelligence to preserve, enhance, and share cultural knowledge for future generations.</p>
                     <div class="hero-cta">
-                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                        <a href="#contact" class="btn btn-primary btn-glow">Get Started</a>
                         <a href="#about" class="btn btn-secondary">Learn More</a>
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <img src="assets/svg/brain.svg" alt="AI Brain Illustration" class="hero-illustration">
+                    <!-- Interactive Brain SVG -->
+                    <div class="brain-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="hero-illustration interactive-brain" id="interactiveBrain">
+                            <defs>
+                                <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4F46E5"/>
+                                    <stop offset="100%" style="stop-color:#10B981"/>
+                                </linearGradient>
+                                <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:0.5"/>
+                                    <stop offset="100%" style="stop-color:#10B981;stop-opacity:0.5"/>
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <filter id="nodeGlow">
+                                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Background Circle -->
+                            <circle cx="200" cy="200" r="180" fill="url(#brainGradient)" opacity="0.1"/>
+
+                            <!-- Brain Outline -->
+                            <g stroke="url(#brainGradient)" stroke-width="3" fill="none" filter="url(#glow)">
+                                <!-- Left Hemisphere -->
+                                <path d="M200 100 C160 100 120 130 110 170 C100 210 105 250 120 280 C135 310 160 330 200 340"/>
+                                <!-- Right Hemisphere -->
+                                <path d="M200 100 C240 100 280 130 290 170 C300 210 295 250 280 280 C265 310 240 330 200 340"/>
+                                <!-- Brain Wrinkles - Left -->
+                                <path d="M130 160 C150 170 170 160 180 150"/>
+                                <path d="M120 200 C145 215 175 200 190 185"/>
+                                <path d="M130 245 C155 255 180 245 195 230"/>
+                                <path d="M145 285 C165 292 185 285 195 275"/>
+                                <!-- Brain Wrinkles - Right -->
+                                <path d="M270 160 C250 170 230 160 220 150"/>
+                                <path d="M280 200 C255 215 225 200 210 185"/>
+                                <path d="M270 245 C245 255 220 245 205 230"/>
+                                <path d="M255 285 C235 292 215 285 205 275"/>
+                                <!-- Center Connection -->
+                                <path d="M200 120 L200 320" stroke-dasharray="5,5"/>
+                            </g>
+
+                            <!-- Circuit Lines -->
+                            <g stroke="url(#circuitGradient)" stroke-width="2" fill="none" class="circuit-lines">
+                                <!-- Horizontal Connections -->
+                                <line x1="130" y1="160" x2="200" y2="180" class="circuit-line"/>
+                                <line x1="270" y1="160" x2="200" y2="180" class="circuit-line"/>
+                                <line x1="120" y1="200" x2="200" y2="180" class="circuit-line"/>
+                                <line x1="280" y1="200" x2="200" y2="180" class="circuit-line"/>
+                                <line x1="130" y1="245" x2="200" y2="240" class="circuit-line"/>
+                                <line x1="270" y1="245" x2="200" y2="240" class="circuit-line"/>
+                                <line x1="145" y1="285" x2="200" y2="300" class="circuit-line"/>
+                                <line x1="255" y1="285" x2="200" y2="300" class="circuit-line"/>
+                                <!-- Cross Connections -->
+                                <line x1="130" y1="160" x2="120" y2="200" stroke-dasharray="3,3"/>
+                                <line x1="120" y1="200" x2="130" y2="245" stroke-dasharray="3,3"/>
+                                <line x1="130" y1="245" x2="145" y2="285" stroke-dasharray="3,3"/>
+                                <line x1="270" y1="160" x2="280" y2="200" stroke-dasharray="3,3"/>
+                                <line x1="280" y1="200" x2="270" y2="245" stroke-dasharray="3,3"/>
+                                <line x1="270" y1="245" x2="255" y2="285" stroke-dasharray="3,3"/>
+                            </g>
+
+                            <!-- Interactive Clickable Nodes -->
+                            <g class="brain-nodes">
+                                <!-- Left Side Nodes -->
+                                <g class="brain-node" data-node="node-1" data-title="Neural Processing">
+                                    <circle cx="130" cy="160" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="130" cy="160" r="6" fill="#fff"/>
+                                    <circle cx="130" cy="160" r="20" fill="transparent" class="node-hitbox"/>
+                                </g>
+                                <g class="brain-node" data-node="node-2" data-title="Memory Systems">
+                                    <circle cx="120" cy="200" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="120" cy="200" r="6" fill="#fff"/>
+                                    <circle cx="120" cy="200" r="20" fill="transparent" class="node-hitbox"/>
+                                </g>
+                                <g class="brain-node" data-node="node-3" data-title="Pattern Recognition">
+                                    <circle cx="130" cy="245" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="130" cy="245" r="6" fill="#fff"/>
+                                    <circle cx="130" cy="245" r="20" fill="transparent" class="node-hitbox"/>
+                                </g>
+                                <g class="brain-node" data-node="node-4" data-title="Language Models">
+                                    <circle cx="145" cy="285" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="145" cy="285" r="6" fill="#fff"/>
+                                    <circle cx="145" cy="285" r="20" fill="transparent" class="node-hitbox"/>
+                                </g>
+
+                                <!-- Right Side Nodes -->
+                                <g class="brain-node" data-node="node-5" data-title="Visual Processing">
+                                    <circle cx="270" cy="160" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="270" cy="160" r="6" fill="#fff"/>
+                                    <circle cx="270" cy="160" r="20" fill="transparent" class="node-hitbox"/>
+                                </g>
+                                <g class="brain-node" data-node="node-6" data-title="Data Analytics">
+                                    <circle cx="280" cy="200" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="280" cy="200" r="6" fill="#fff"/>
+                                    <circle cx="280" cy="200" r="20" fill="transparent" class="node-hitbox"/>
+                                </g>
+                                <g class="brain-node" data-node="node-7" data-title="Decision Engine">
+                                    <circle cx="270" cy="245" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="270" cy="245" r="6" fill="#fff"/>
+                                    <circle cx="270" cy="245" r="20" fill="transparent" class="node-hitbox"/>
+                                </g>
+                                <g class="brain-node" data-node="node-8" data-title="Knowledge Graph">
+                                    <circle cx="255" cy="285" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="255" cy="285" r="6" fill="#fff"/>
+                                    <circle cx="255" cy="285" r="20" fill="transparent" class="node-hitbox"/>
+                                </g>
+
+                                <!-- Center Nodes -->
+                                <g class="brain-node brain-node-primary" data-node="node-core" data-title="AI Core Engine">
+                                    <circle cx="200" cy="180" r="16" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="200" cy="180" r="8" fill="#fff"/>
+                                    <circle cx="200" cy="180" r="25" fill="transparent" class="node-hitbox"/>
+                                </g>
+                            </g>
+
+                            <!-- Pulse Animations -->
+                            <g class="pulse-effects">
+                                <circle cx="200" cy="120" r="8" fill="url(#brainGradient)" opacity="0.5">
+                                    <animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="200" cy="300" r="8" fill="url(#brainGradient)" opacity="0.5">
+                                    <animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite" begin="1s"/>
+                                    <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" begin="1s"/>
+                                </circle>
+                            </g>
+
+                            <!-- Data flow particles (animated via JS) -->
+                            <g class="data-particles" id="dataParticles"></g>
+                        </svg>
+
+                        <!-- Node tooltip -->
+                        <div class="node-tooltip" id="nodeTooltip">
+                            <span class="tooltip-text"></span>
+                            <span class="tooltip-hint">Click to preview</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -55,15 +205,21 @@
                 <h2 class="section-title">About Us</h2>
                 <p class="section-description">FolkTech.AI bridges the gap between ancestral wisdom and cutting-edge technology. We believe that the knowledge passed down through generations holds immense value, and AI can help us preserve, understand, and share it more effectively.</p>
                 <div class="about-grid">
-                    <div class="about-card">
+                    <div class="about-card electric-card" data-delay="0">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
                         <h3>Our Mission</h3>
                         <p>To democratize access to cultural knowledge through intelligent technology solutions.</p>
                     </div>
-                    <div class="about-card">
+                    <div class="about-card electric-card" data-delay="100">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
                         <h3>Our Vision</h3>
                         <p>A world where traditional wisdom and modern innovation work hand in hand.</p>
                     </div>
-                    <div class="about-card">
+                    <div class="about-card electric-card" data-delay="200">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
                         <h3>Our Values</h3>
                         <p>Respect for heritage, commitment to innovation, and dedication to accessibility.</p>
                     </div>
@@ -75,23 +231,63 @@
             <div class="container">
                 <h2 class="section-title">Our Services</h2>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">📚</div>
+                    <div class="service-card electric-card" data-delay="0">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                </svg>
+                            </div>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Knowledge Preservation</h3>
                         <p>AI-powered digitization and cataloging of traditional knowledge, stories, and practices.</p>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">🔍</div>
+                    <div class="service-card electric-card" data-delay="100">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="M21 21l-4.35-4.35"/>
+                                </svg>
+                            </div>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Intelligent Search</h3>
                         <p>Advanced search capabilities that understand context and cultural nuances.</p>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">🌐</div>
+                    <div class="service-card electric-card" data-delay="200">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                            </div>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Translation Services</h3>
                         <p>AI-assisted translation preserving the essence of traditional languages.</p>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">💡</div>
+                    <div class="service-card electric-card" data-delay="300">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                            </div>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Custom Solutions</h3>
                         <p>Tailored AI applications designed for your specific cultural preservation needs.</p>
                     </div>
@@ -104,15 +300,47 @@
                 <h2 class="section-title">Our Technology</h2>
                 <p class="section-description">We leverage state-of-the-art AI technologies while maintaining respect for the cultural contexts we work with.</p>
                 <div class="tech-features">
-                    <div class="tech-feature">
+                    <div class="tech-feature electric-card" data-delay="0">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
+                        <div class="tech-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
                         <h3>Natural Language Processing</h3>
                         <p>Understanding and processing traditional languages with cultural sensitivity.</p>
                     </div>
-                    <div class="tech-feature">
+                    <div class="tech-feature electric-card" data-delay="100">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
+                        <div class="tech-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
                         <h3>Machine Learning</h3>
                         <p>Pattern recognition for identifying connections across cultural datasets.</p>
                     </div>
-                    <div class="tech-feature">
+                    <div class="tech-feature electric-card" data-delay="200">
+                        <div class="card-glow"></div>
+                        <div class="electric-border"></div>
+                        <div class="tech-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <circle cx="19" cy="5" r="2"/>
+                                <circle cx="5" cy="5" r="2"/>
+                                <circle cx="5" cy="19" r="2"/>
+                                <circle cx="19" cy="19" r="2"/>
+                                <line x1="12" y1="9" x2="12" y2="5"/>
+                                <line x1="6.5" y1="6.5" x2="9.5" y2="9.5"/>
+                                <line x1="14.5" y1="14.5" x2="17.5" y2="17.5"/>
+                                <line x1="6.5" y1="17.5" x2="9.5" y2="14.5"/>
+                                <line x1="17.5" y1="6.5" x2="14.5" y2="9.5"/>
+                            </svg>
+                        </div>
                         <h3>Knowledge Graphs</h3>
                         <p>Building interconnected maps of cultural knowledge and relationships.</p>
                     </div>
@@ -124,7 +352,9 @@
             <div class="container">
                 <h2 class="section-title">Get in Touch</h2>
                 <p class="section-description">Ready to explore how AI can help preserve and share your cultural heritage? We'd love to hear from you.</p>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form electric-card" id="contactForm">
+                    <div class="card-glow"></div>
+                    <div class="electric-border"></div>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -137,7 +367,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary btn-glow">Send Message</button>
                 </form>
             </div>
         </section>
@@ -163,6 +393,45 @@
         </div>
     </footer>
 
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-overlay"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" aria-label="Close modal">&times;</button>
+            <div class="video-modal-header">
+                <h3 class="video-modal-title"></h3>
+            </div>
+            <div class="video-modal-body">
+                <!-- Placeholder video container -->
+                <div class="video-placeholder" id="videoPlaceholder">
+                    <div class="video-placeholder-animation">
+                        <div class="placeholder-brain">
+                            <svg viewBox="0 0 100 100" fill="none">
+                                <circle cx="50" cy="50" r="40" stroke="url(#placeholderGrad)" stroke-width="2" fill="none">
+                                    <animate attributeName="stroke-dasharray" values="0,251;251,0" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <defs>
+                                    <linearGradient id="placeholderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#4F46E5"/>
+                                        <stop offset="100%" style="stop-color:#10B981"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <p class="placeholder-text">Video Coming Soon</p>
+                        <p class="placeholder-subtext">Product demo will be available here</p>
+                    </div>
+                </div>
+                <!-- Actual video element (hidden until videos are uploaded) -->
+                <video class="video-player" id="videoPlayer" controls style="display: none;">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
+    <script src="js/interactions.js"></script>
 </body>
 </html>
