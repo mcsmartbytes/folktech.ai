@@ -222,10 +222,10 @@
                 if (particle.y < 0) particle.y = height;
                 if (particle.y > height) particle.y = 0;
 
-                // Draw particle
+                // Draw particle - using cyan color from logo
                 ctx.beginPath();
                 ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(79, 70, 229, ${particle.opacity})`;
+                ctx.fillStyle = `rgba(0, 212, 255, ${particle.opacity})`;
                 ctx.fill();
 
                 // Draw connections to nearby particles
@@ -238,7 +238,7 @@
                         ctx.beginPath();
                         ctx.moveTo(particle.x, particle.y);
                         ctx.lineTo(other.x, other.y);
-                        ctx.strokeStyle = `rgba(79, 70, 229, ${0.2 * (1 - distance / 100)})`;
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.15 * (1 - distance / 100)})`;
                         ctx.stroke();
                     }
                 });
@@ -398,7 +398,7 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 100;
-            box-shadow: 0 0 10px #4F46E5, 0 0 20px #4F46E5, 0 0 30px #10B981;
+            box-shadow: 0 0 10px #00D4FF, 0 0 20px #00D4FF, 0 0 30px #A855F7;
             animation: sparkAnimation 0.5s ease-out forwards;
         `;
 

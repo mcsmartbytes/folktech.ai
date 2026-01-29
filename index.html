@@ -53,23 +53,38 @@
                     <div class="brain-container">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="hero-illustration interactive-brain" id="interactiveBrain">
                             <defs>
+                                <!-- Orange/Gold gradient for brain outline and nodes -->
                                 <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#4F46E5"/>
-                                    <stop offset="100%" style="stop-color:#10B981"/>
+                                    <stop offset="0%" style="stop-color:#F97316"/>
+                                    <stop offset="50%" style="stop-color:#FBBF24"/>
+                                    <stop offset="100%" style="stop-color:#F97316"/>
                                 </linearGradient>
+                                <!-- Cyan to purple gradient for circuit lines -->
                                 <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:0.5"/>
-                                    <stop offset="100%" style="stop-color:#10B981;stop-opacity:0.5"/>
+                                    <stop offset="0%" style="stop-color:#00D4FF;stop-opacity:0.7"/>
+                                    <stop offset="100%" style="stop-color:#A855F7;stop-opacity:0.7"/>
                                 </linearGradient>
-                                <filter id="glow">
-                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <!-- Strong orange glow filter -->
+                                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                                     <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
                                         <feMergeNode in="coloredBlur"/>
                                         <feMergeNode in="SourceGraphic"/>
                                     </feMerge>
                                 </filter>
-                                <filter id="nodeGlow">
-                                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                <!-- Intense node glow -->
+                                <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+                                    <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <!-- Cyan circuit glow -->
+                                <filter id="circuitGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                                     <feMerge>
                                         <feMergeNode in="coloredBlur"/>
                                         <feMergeNode in="SourceGraphic"/>
@@ -77,11 +92,11 @@
                                 </filter>
                             </defs>
 
-                            <!-- Background Circle -->
-                            <circle cx="200" cy="200" r="180" fill="url(#brainGradient)" opacity="0.1"/>
+                            <!-- Background glow -->
+                            <circle cx="200" cy="200" r="160" fill="url(#brainGradient)" opacity="0.05"/>
 
-                            <!-- Brain Outline -->
-                            <g stroke="url(#brainGradient)" stroke-width="3" fill="none" filter="url(#glow)">
+                            <!-- Brain Outline - Orange/Gold glowing -->
+                            <g stroke="url(#brainGradient)" stroke-width="2.5" fill="none" filter="url(#glow)">
                                 <!-- Left Hemisphere -->
                                 <path d="M200 100 C160 100 120 130 110 170 C100 210 105 250 120 280 C135 310 160 330 200 340"/>
                                 <!-- Right Hemisphere -->
@@ -100,8 +115,8 @@
                                 <path d="M200 120 L200 320" stroke-dasharray="5,5"/>
                             </g>
 
-                            <!-- Circuit Lines -->
-                            <g stroke="url(#circuitGradient)" stroke-width="2" fill="none" class="circuit-lines">
+                            <!-- Circuit Lines - Cyan to Purple -->
+                            <g stroke="url(#circuitGradient)" stroke-width="1.5" fill="none" class="circuit-lines" filter="url(#circuitGlow)">
                                 <!-- Horizontal Connections -->
                                 <line x1="130" y1="160" x2="200" y2="180" class="circuit-line"/>
                                 <line x1="270" y1="160" x2="200" y2="180" class="circuit-line"/>
@@ -120,69 +135,69 @@
                                 <line x1="270" y1="245" x2="255" y2="285" stroke-dasharray="3,3"/>
                             </g>
 
-                            <!-- Interactive Clickable Nodes -->
+                            <!-- Interactive Clickable Nodes - Orange/Gold glowing -->
                             <g class="brain-nodes">
                                 <!-- Left Side Nodes -->
                                 <g class="brain-node" data-node="node-1" data-title="Neural Processing">
-                                    <circle cx="130" cy="160" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="130" cy="160" r="6" fill="#fff"/>
-                                    <circle cx="130" cy="160" r="20" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="130" cy="160" r="10" fill="#F97316" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="130" cy="160" r="4" fill="#FEF3C7"/>
+                                    <circle cx="130" cy="160" r="18" fill="transparent" class="node-hitbox"/>
                                 </g>
                                 <g class="brain-node" data-node="node-2" data-title="Memory Systems">
-                                    <circle cx="120" cy="200" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="120" cy="200" r="6" fill="#fff"/>
-                                    <circle cx="120" cy="200" r="20" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="120" cy="200" r="10" fill="#F97316" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="120" cy="200" r="4" fill="#FEF3C7"/>
+                                    <circle cx="120" cy="200" r="18" fill="transparent" class="node-hitbox"/>
                                 </g>
                                 <g class="brain-node" data-node="node-3" data-title="Pattern Recognition">
-                                    <circle cx="130" cy="245" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="130" cy="245" r="6" fill="#fff"/>
-                                    <circle cx="130" cy="245" r="20" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="130" cy="245" r="10" fill="#F97316" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="130" cy="245" r="4" fill="#FEF3C7"/>
+                                    <circle cx="130" cy="245" r="18" fill="transparent" class="node-hitbox"/>
                                 </g>
                                 <g class="brain-node" data-node="node-4" data-title="Language Models">
-                                    <circle cx="145" cy="285" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="145" cy="285" r="6" fill="#fff"/>
-                                    <circle cx="145" cy="285" r="20" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="145" cy="285" r="10" fill="#F97316" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="145" cy="285" r="4" fill="#FEF3C7"/>
+                                    <circle cx="145" cy="285" r="18" fill="transparent" class="node-hitbox"/>
                                 </g>
 
                                 <!-- Right Side Nodes -->
                                 <g class="brain-node" data-node="node-5" data-title="Visual Processing">
-                                    <circle cx="270" cy="160" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="270" cy="160" r="6" fill="#fff"/>
-                                    <circle cx="270" cy="160" r="20" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="270" cy="160" r="10" fill="#F97316" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="270" cy="160" r="4" fill="#FEF3C7"/>
+                                    <circle cx="270" cy="160" r="18" fill="transparent" class="node-hitbox"/>
                                 </g>
                                 <g class="brain-node" data-node="node-6" data-title="Data Analytics">
-                                    <circle cx="280" cy="200" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="280" cy="200" r="6" fill="#fff"/>
-                                    <circle cx="280" cy="200" r="20" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="280" cy="200" r="10" fill="#F97316" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="280" cy="200" r="4" fill="#FEF3C7"/>
+                                    <circle cx="280" cy="200" r="18" fill="transparent" class="node-hitbox"/>
                                 </g>
                                 <g class="brain-node" data-node="node-7" data-title="Decision Engine">
-                                    <circle cx="270" cy="245" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="270" cy="245" r="6" fill="#fff"/>
-                                    <circle cx="270" cy="245" r="20" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="270" cy="245" r="10" fill="#F97316" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="270" cy="245" r="4" fill="#FEF3C7"/>
+                                    <circle cx="270" cy="245" r="18" fill="transparent" class="node-hitbox"/>
                                 </g>
                                 <g class="brain-node" data-node="node-8" data-title="Knowledge Graph">
-                                    <circle cx="255" cy="285" r="12" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="255" cy="285" r="6" fill="#fff"/>
-                                    <circle cx="255" cy="285" r="20" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="255" cy="285" r="10" fill="#F97316" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="255" cy="285" r="4" fill="#FEF3C7"/>
+                                    <circle cx="255" cy="285" r="18" fill="transparent" class="node-hitbox"/>
                                 </g>
 
-                                <!-- Center Nodes -->
+                                <!-- Center Nodes - Larger and brighter -->
                                 <g class="brain-node brain-node-primary" data-node="node-core" data-title="AI Core Engine">
-                                    <circle cx="200" cy="180" r="16" fill="url(#brainGradient)" filter="url(#nodeGlow)" class="node-bg"/>
-                                    <circle cx="200" cy="180" r="8" fill="#fff"/>
-                                    <circle cx="200" cy="180" r="25" fill="transparent" class="node-hitbox"/>
+                                    <circle cx="200" cy="180" r="14" fill="#FBBF24" filter="url(#nodeGlow)" class="node-bg"/>
+                                    <circle cx="200" cy="180" r="6" fill="#FEF3C7"/>
+                                    <circle cx="200" cy="180" r="22" fill="transparent" class="node-hitbox"/>
                                 </g>
                             </g>
 
-                            <!-- Pulse Animations -->
+                            <!-- Pulse Animations - Orange glow -->
                             <g class="pulse-effects">
-                                <circle cx="200" cy="120" r="8" fill="url(#brainGradient)" opacity="0.5">
-                                    <animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
+                                <circle cx="200" cy="120" r="6" fill="#F97316" opacity="0.6">
+                                    <animate attributeName="r" values="6;18;6" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
                                 </circle>
-                                <circle cx="200" cy="300" r="8" fill="url(#brainGradient)" opacity="0.5">
-                                    <animate attributeName="r" values="8;20;8" dur="2s" repeatCount="indefinite" begin="1s"/>
-                                    <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" begin="1s"/>
+                                <circle cx="200" cy="300" r="6" fill="#F97316" opacity="0.6">
+                                    <animate attributeName="r" values="6;18;6" dur="2s" repeatCount="indefinite" begin="1s"/>
+                                    <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" begin="1s"/>
                                 </circle>
                             </g>
 
@@ -412,8 +427,8 @@
                                 </circle>
                                 <defs>
                                     <linearGradient id="placeholderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#4F46E5"/>
-                                        <stop offset="100%" style="stop-color:#10B981"/>
+                                        <stop offset="0%" style="stop-color:#00D4FF"/>
+                                        <stop offset="100%" style="stop-color:#A855F7"/>
                                     </linearGradient>
                                 </defs>
                             </svg>
