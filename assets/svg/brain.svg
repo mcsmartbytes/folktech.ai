@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Glow effect -->
+  <ellipse cx="200" cy="200" rx="150" ry="140" fill="url(#glowGradient)"/>
+
+  <!-- Brain outline -->
+  <path d="M200 60
+           C280 60 340 100 340 160
+           C340 200 320 230 300 250
+           C310 270 310 300 290 320
+           C270 340 240 350 200 350
+           C160 350 130 340 110 320
+           C90 300 90 270 100 250
+           C80 230 60 200 60 160
+           C60 100 120 60 200 60Z"
+        fill="url(#brainGradient)"
+        opacity="0.9"/>
+
+  <!-- Brain folds - left hemisphere -->
+  <path d="M100 160 Q130 140 160 160 Q130 180 100 160"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M90 200 Q120 180 150 200 Q120 220 90 200"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M110 240 Q140 220 170 240 Q140 260 110 240"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M130 280 Q160 260 190 280 Q160 300 130 280"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- Brain folds - right hemisphere -->
+  <path d="M240 160 Q270 140 300 160 Q270 180 240 160"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M250 200 Q280 180 310 200 Q280 220 250 200"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M230 240 Q260 220 290 240 Q260 260 230 240"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M210 280 Q240 260 270 280 Q240 300 210 280"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- Center division -->
+  <path d="M200 80 Q195 150 200 200 Q205 250 200 320"
+        stroke="#fff" stroke-width="2" fill="none" opacity="0.4"/>
+
+  <!-- Neural connection dots -->
+  <circle cx="140" cy="140" r="4" fill="#fff" opacity="0.8"/>
+  <circle cx="260" cy="140" r="4" fill="#fff" opacity="0.8"/>
+  <circle cx="120" cy="200" r="4" fill="#fff" opacity="0.8"/>
+  <circle cx="280" cy="200" r="4" fill="#fff" opacity="0.8"/>
+  <circle cx="150" cy="260" r="4" fill="#fff" opacity="0.8"/>
+  <circle cx="250" cy="260" r="4" fill="#fff" opacity="0.8"/>
+  <circle cx="200" cy="180" r="5" fill="#fff" opacity="0.9"/>
+
+  <!-- Synaptic connections -->
+  <line x1="140" y1="140" x2="200" y2="180" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  <line x1="260" y1="140" x2="200" y2="180" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  <line x1="120" y1="200" x2="200" y2="180" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  <line x1="280" y1="200" x2="200" y2="180" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  <line x1="150" y1="260" x2="200" y2="180" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  <line x1="250" y1="260" x2="200" y2="180" stroke="#fff" stroke-width="1" opacity="0.4"/>
+</svg>
