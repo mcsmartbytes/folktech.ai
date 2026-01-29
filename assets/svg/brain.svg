@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5"/>
+      <stop offset="100%" style="stop-color:#10B981"/>
+    </linearGradient>
+    <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:0.5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="url(#brainGradient)" opacity="0.1"/>
+
+  <!-- Brain Outline -->
+  <g stroke="url(#brainGradient)" stroke-width="3" fill="none">
+    <!-- Left Hemisphere -->
+    <path d="M200 100
+             C160 100 120 130 110 170
+             C100 210 105 250 120 280
+             C135 310 160 330 200 340"/>
+
+    <!-- Right Hemisphere -->
+    <path d="M200 100
+             C240 100 280 130 290 170
+             C300 210 295 250 280 280
+             C265 310 240 330 200 340"/>
+
+    <!-- Brain Wrinkles - Left -->
+    <path d="M130 160 C150 170 170 160 180 150"/>
+    <path d="M120 200 C145 215 175 200 190 185"/>
+    <path d="M130 245 C155 255 180 245 195 230"/>
+    <path d="M145 285 C165 292 185 285 195 275"/>
+
+    <!-- Brain Wrinkles - Right -->
+    <path d="M270 160 C250 170 230 160 220 150"/>
+    <path d="M280 200 C255 215 225 200 210 185"/>
+    <path d="M270 245 C245 255 220 245 205 230"/>
+    <path d="M255 285 C235 292 215 285 205 275"/>
+
+    <!-- Center Connection -->
+    <path d="M200 120 L200 320" stroke-dasharray="5,5"/>
+  </g>
+
+  <!-- Circuit Nodes -->
+  <g fill="url(#brainGradient)">
+    <!-- Left Side Nodes -->
+    <circle cx="130" cy="160" r="6"/>
+    <circle cx="120" cy="200" r="6"/>
+    <circle cx="130" cy="245" r="6"/>
+    <circle cx="145" cy="285" r="6"/>
+
+    <!-- Right Side Nodes -->
+    <circle cx="270" cy="160" r="6"/>
+    <circle cx="280" cy="200" r="6"/>
+    <circle cx="270" cy="245" r="6"/>
+    <circle cx="255" cy="285" r="6"/>
+
+    <!-- Center Nodes -->
+    <circle cx="200" cy="120" r="8"/>
+    <circle cx="200" cy="180" r="6"/>
+    <circle cx="200" cy="240" r="6"/>
+    <circle cx="200" cy="300" r="8"/>
+  </g>
+
+  <!-- Circuit Lines -->
+  <g stroke="url(#circuitGradient)" stroke-width="2" fill="none">
+    <!-- Horizontal Connections -->
+    <line x1="130" y1="160" x2="200" y2="180"/>
+    <line x1="270" y1="160" x2="200" y2="180"/>
+    <line x1="120" y1="200" x2="200" y2="180"/>
+    <line x1="280" y1="200" x2="200" y2="180"/>
+    <line x1="130" y1="245" x2="200" y2="240"/>
+    <line x1="270" y1="245" x2="200" y2="240"/>
+    <line x1="145" y1="285" x2="200" y2="300"/>
+    <line x1="255" y1="285" x2="200" y2="300"/>
+
+    <!-- Cross Connections -->
+    <line x1="130" y1="160" x2="120" y2="200" stroke-dasharray="3,3"/>
+    <line x1="120" y1="200" x2="130" y2="245" stroke-dasharray="3,3"/>
+    <line x1="130" y1="245" x2="145" y2="285" stroke-dasharray="3,3"/>
+    <line x1="270" y1="160" x2="280" y2="200" stroke-dasharray="3,3"/>
+    <line x1="280" y1="200" x2="270" y2="245" stroke-dasharray="3,3"/>
+    <line x1="270" y1="245" x2="255" y2="285" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- Pulse Animations -->
+  <g fill="url(#brainGradient)">
+    <circle cx="200" cy="120" r="8" opacity="0.5">
+      <animate attributeName="r" values="8;15;8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" cy="300" r="8" opacity="0.5">
+      <animate attributeName="r" values="8;15;8" dur="2s" repeatCount="indefinite" begin="1s"/>
+      <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+
+  <!-- AI Text -->
+  <text x="200" y="380" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="bold" fill="url(#brainGradient)">
+    AI
+  </text>
+</svg>
