@@ -485,11 +485,11 @@
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            // Movement strength
-            const moveX = ((x - centerX) / centerX) * 12;
-            const moveY = ((y - centerY) / centerY) * 12;
+            // Directional movement (14px for more responsive feel)
+            const moveX = ((x - centerX) / centerX) * 14;
+            const moveY = ((y - centerY) / centerY) * 14;
 
-            // Subtle tilt for 3D effect
+            // Subtle tilt for depth
             const rotateX = ((y - centerY) / centerY) * 6;
             const rotateY = ((x - centerX) / centerX) * -6;
 

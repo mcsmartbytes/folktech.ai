@@ -193,26 +193,23 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--spacing-sm);
 }
 
-/* Interactive Logo Container */
-.logo-container {
+/* Interactive Logo Wrapper */
+.logo-wrapper {
     display: inline-block;
-    perspective: 1000px;
-}
-
-.logo-img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
+    perspective: 1200px;
 }
 
 .interactive-logo {
-    transition: transform 0.18s cubic-bezier(.22,.61,.36,1), filter 0.3s ease;
+    width: 56px;
+    height: auto;
+    transform-style: preserve-3d;
+    transition: transform 0.16s cubic-bezier(.22,.61,.36,1), filter 0.3s ease;
     will-change: transform;
 }
 
 .interactive-logo:hover {
-    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6))
-            drop-shadow(0 0 40px rgba(168, 85, 247, 0.4));
+    filter: drop-shadow(0 0 14px rgba(0, 200, 255, 0.45))
+            drop-shadow(0 0 22px rgba(160, 120, 255, 0.35));
 }
 
 .logo-text {
