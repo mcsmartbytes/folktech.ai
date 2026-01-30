@@ -108,12 +108,12 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../assets/images/logo.png');
+    background-image: url('../assets/images/hero-bg.png');
     background-repeat: no-repeat;
-    background-position: center 30%;
-    background-size: 900px auto;
-    opacity: 0.18;
-    filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.2));
+    background-position: center;
+    background-size: cover;
+    opacity: 0.3;
+    filter: none;
 }
 
 img {
