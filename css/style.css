@@ -96,6 +96,19 @@ body {
     overflow-x: hidden;
 }
 
+.page-background {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-bg-darker);
+    background-image: url('../assets/images/logo.png');
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    background-size: 900px auto;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -2;
+}
+
 img {
     max-width: 100%;
     height: auto;

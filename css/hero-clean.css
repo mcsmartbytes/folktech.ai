@@ -14,32 +14,7 @@
 }
 
 .hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('../assets/images/hero-bg.png');
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    opacity: 1;
-    z-index: -1;
-}
-
-.hero-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(5, 7, 15, 0.35) 0%,
-        rgba(5, 7, 15, 0.15) 45%,
-        rgba(5, 7, 15, 0.4) 100%
-    );
+    display: none;
 }
 
 .hero-content {
