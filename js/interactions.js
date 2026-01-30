@@ -470,6 +470,48 @@
     }
 
     // ========================================
+    // Interactive Logo 3D Effect
+    // ========================================
+    function initInteractiveLogo() {
+        const logo = document.querySelector('.interactive-logo');
+        if (!logo) return;
+
+        logo.addEventListener('mousemove', (e) => {
+            const rect = logo.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Movement strength
+            const moveX = ((x - centerX) / centerX) * 12;
+            const moveY = ((y - centerY) / centerY) * 12;
+
+            // Subtle tilt for 3D effect
+            const rotateX = ((y - centerY) / centerY) * 6;
+            const rotateY = ((x - centerX) / centerX) * -6;
+
+            logo.style.transform = `
+                translate(${moveX}px, ${moveY}px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                scale(1.04)
+            `;
+        });
+
+        logo.addEventListener('mouseleave', () => {
+            logo.style.transform = `
+                translate(0px, 0px)
+                rotateX(0deg)
+                rotateY(0deg)
+                scale(1)
+            `;
+        });
+    }
+
+    // ========================================
     // Initialize All Interactions
     // ========================================
     function init() {
@@ -480,6 +522,7 @@
         initScrollReveal();
         initElectricSparks();
         initMouseParallax();
+        initInteractiveLogo();
         // Uncomment for typing effect: initTypingEffect();
 
         console.log('FolkTech.AI interactions initialized');
