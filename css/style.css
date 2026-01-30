@@ -100,13 +100,21 @@ body {
     position: fixed;
     inset: 0;
     background-color: var(--color-bg-darker);
-    background-image: url('../assets/images/logo.png');
-    background-repeat: no-repeat;
-    background-position: center 30%;
-    background-size: 900px auto;
-    opacity: 0.15;
     pointer-events: none;
     z-index: -2;
+}
+
+.page-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/images/hero-bg.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    opacity: 0.22;
+    filter: blur(6px) saturate(0.9);
+    transform: scale(1.04);
 }
 
 img {
