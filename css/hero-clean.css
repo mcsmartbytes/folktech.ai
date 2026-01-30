@@ -10,7 +10,7 @@
     padding-top: 72px; /* Header height */
     overflow: hidden;
     color: #F8FAFC;
-    background-color: #070B16;
+    background-color: #05070f;
 }
 
 .hero-bg {
@@ -21,7 +21,7 @@
     bottom: 0;
     background-image: url('../assets/images/hero-bg.png');
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     background-repeat: no-repeat;
     opacity: 1;
     z-index: -1;
@@ -36,9 +36,9 @@
     bottom: 0;
     background: linear-gradient(
         135deg,
-        rgba(7, 11, 22, 0.78) 0%,
-        rgba(7, 11, 22, 0.55) 45%,
-        rgba(7, 11, 22, 0.82) 100%
+        rgba(5, 7, 15, 0.35) 0%,
+        rgba(5, 7, 15, 0.15) 45%,
+        rgba(5, 7, 15, 0.4) 100%
     );
 }
 
